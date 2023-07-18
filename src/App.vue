@@ -35,6 +35,7 @@ const isFetching = ref(false);
 
 const onFormHandler = async () => {
   isFetching.value = true;
+  weather.value = {};
   try {
     const response = await axios.request(options.value);
     weather.value = response.data;
@@ -66,7 +67,7 @@ const showResult = computed(() => {
       <Spinner v-if="isFetching" />
       <WeatherCard
         v-if="showResult"
-        :city="locationTarget.city"
+        :target="locationTarget"
         :weather="weather"
       />
     </div>

@@ -1,14 +1,15 @@
 <script setup>
 import hotIcon from "../assets/hotIcon.svg";
 import coldIcon from "../assets/coldIcon.svg";
+import { computed } from "vue";
 
 const iconsDict = {
   hotDay: hotIcon,
   coldDay: coldIcon,
 };
 const props = defineProps({
-  city: {
-    type: String,
+  target: {
+    type: Object,
     required: true,
   },
   weather: {
@@ -16,11 +17,13 @@ const props = defineProps({
     required: true,
   },
 });
+
+const cityTarget = { ...props.target };
 </script>
 
 <template>
   <div class="card animated slideInRight">
-    <h3 class="title">Weather in {{ city }}</h3>
+    <h3 class="title">Weather in {{ cityTarget.city }}</h3>
     <div class="card-flex">
       <div class="card_image-content">
         <img :src="iconsDict.coldDay" alt="icono clima" />

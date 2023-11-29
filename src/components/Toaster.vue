@@ -1,5 +1,6 @@
 <template>
   <div class="alert">
+    <p>Slot name?</p>
     <slot></slot>
   </div>
 </template>
